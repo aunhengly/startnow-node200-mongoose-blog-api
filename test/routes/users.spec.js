@@ -21,18 +21,18 @@ describe('/api/users', function () {
             });
     });
 
-    // it('GET /:id should respond with a user when a valid ID is passed', (done) => {
-    //     createUserInDB().then(user => {
-    //         chai.request(app)
-    //             .get(`/api/users/${user._id}`)
-    //             .end((err, res) => {
-    //                 expect(res).to.have.status(200);
-    //                 expect(res.body).to.be.instanceOf(Object);
-    //                 expect(res.body._id).to.equal(String(user._id));
-    //                 done();
-    //             });
-    //     });
-    // });
+    it('GET /:id should respond with a user when a valid ID is passed', (done) => {
+        createUserInDB().then(user => {
+            chai.request(app)
+                .get(`/api/users/${user._id}`)
+                .end((err, res) => {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.instanceOf(Object);
+                    expect(res.body._id).to.equal(String(user._id));
+                    done();
+                });
+        });
+    });
 
     it('GET /:id should respond with 404 when an invalid ID is passed', (done) => {
         chai.request(app)
